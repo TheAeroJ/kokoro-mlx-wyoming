@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template: scripts/install-service.sh fills in the __PLACEHOLDERS__. -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.kokoro-mlx-wyoming</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>__PROJECT_DIR__/.venv/bin/kokoro-mlx-wyoming</string>
+        <string>--uri</string>
+        <string>tcp://0.0.0.0:__PORT__</string>
+        <string>--voice</string>
+        <string>__VOICE__</string>
+        <string>--zeroconf</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__PROJECT_DIR__</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Restart if it crashes or exits. -->
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <!-- Run at normal priority, not as background work. -->
+    <key>ProcessType</key>
+    <string>Interactive</string>
+
+    <key>StandardOutPath</key>
+    <string>__LOG_DIR__/kokoro-mlx-wyoming.log</string>
+    <key>StandardErrorPath</key>
+    <string>__LOG_DIR__/kokoro-mlx-wyoming.log</string>
+</dict>
+</plist>
